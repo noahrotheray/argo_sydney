@@ -3,6 +3,11 @@ kind: Deployment
 metadata:
   name: high-priority-deploy
 spec:
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
   replicas: 1
   selector:
     matchLabels:
@@ -12,11 +17,6 @@ spec:
       labels:
         app: nginx-high
     spec:
-      ignoreDifferences:
-        - group: apps
-          kind: Deployment
-          jsonPointers:
-            - /spec/replicas
       priorityClassName: high-priority
       containers:
         - name: nginx
