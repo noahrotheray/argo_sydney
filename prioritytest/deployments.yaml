@@ -12,6 +12,11 @@ spec:
       labels:
         app: nginx-high
     spec:
+      ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jsonPointers:
+            - /spec/replicas
       priorityClassName: high-priority
       containers:
         - name: nginx
