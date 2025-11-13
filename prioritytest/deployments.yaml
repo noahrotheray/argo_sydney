@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: high-priority-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-high
+  template:
+    metadata:
+      labels:
+        app: nginx-high
+    spec:
+      priorityClassName: high-priority
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medium-priority-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-medium
+  template:
+    metadata:
+      labels:
+        app: nginx-medium
+    spec:
+      priorityClassName: medium-priority
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: low-priority-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-low
+  template:
+    metadata:
+      labels:
+        app: nginx-low
+    spec:
+      priorityClassName: low-priority
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+
