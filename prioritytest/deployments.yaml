@@ -18,11 +18,11 @@ spec:
           image: nginx
           resources:
             requests:
-              cpu: "500m"
+              cpu: 100m
               memory: "256Mi"
             limits:
-              cpu: "1"
-              memory: "512Mi"
+              cpu: 100m
+              memory: "256Mi"
 
 ---
 apiVersion: apps/v1
@@ -44,12 +44,12 @@ spec:
         - name: nginx
           image: nginx
           resources:
-            requests:
-              cpu: "500m"
+            rrequests:
+              cpu: 100m
               memory: "256Mi"
             limits:
-              cpu: "1"
-              memory: "512Mi"
+              cpu: 100m
+              memory: "256Mi"
 
 ---
 apiVersion: apps/v1
@@ -72,9 +72,9 @@ spec:
           image: nginx
           resources:
             requests:
-              cpu: "500m"
+              cpu: 100m
               memory: "256Mi"
             limits:
-              cpu: "1"
-              memory: "512Mi"
+              cpu: 100m
+              memory: "256Mi"
 
